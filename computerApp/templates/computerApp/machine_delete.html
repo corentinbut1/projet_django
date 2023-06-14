@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<h2>Nom</h2>
+<form method="post" class="form">
+    {% csrf_token %}
+    {{form.as_p}}
+<input type="submit" value="Suprimer">
+</form>
+
+
+{% endblock %}

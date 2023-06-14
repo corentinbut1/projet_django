@@ -1,0 +1,24 @@
+{% extends "index.html" %} 
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <h1>Liste des personnels</h1>
+    <div class="d-flex justify-content-between mb-3">
+      <a href="{% url 'add-personnels' %}" class="btn btn-primary">Ajouter du personnel</a>
+      <a href="{% url 'delete-personnel' %}" class="btn btn-danger">supprimer du personnel</a>
+   </div>
+   {% if personnels %}
+   <ul class="list-group">
+      {% for personnel in personnels %}
+      <li class="list-group-item">
+         <a href="{% url 'personnel-detail' personnel.id %}">
+               {{ personnel.id }} - {{ personnel.nom }}
+         </a>
+      </li>
+      {% endfor %}
+   </ul>
+   {% else %}
+   <p>Il n'y a pas de personnel.</p>
+   {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <h1>Liste des mises à jour</h1>
+    <div class="d-flex justify-content-between mb-3">
+        <a href="{% url 'add-machines' %}" class="btn btn-primary">Ajouter une machine</a>
+        <a href="{% url 'delete-machine' %}" class="btn btn-danger">Supprimer une machine</a>
+    </div>
+
+    {% if machines %}
+    <ul class="list-group">
+        {% for machine in machines %}
+        <li class="list-group-item">
+            <a href="{% url 'machine-detail' machine.id %}">
+                {{ machine.mise_a_jour|date:"d/m/Y H:i" }} - {{ machine.nom }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Il n'y a pas de machine.</p>
+    {% endif %}
+</div>
+{% endblock %}

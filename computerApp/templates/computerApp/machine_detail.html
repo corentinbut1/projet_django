@@ -1,0 +1,35 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center flex-column">
+    <h1>Détails de la machine</h1>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <strong>ID:</strong> {{ machine.id }}
+        </li>
+        <li class="list-group-item">
+            <strong>Nom:</strong> {{ machine.nom }}
+        </li>
+        <li class="list-group-item">
+            <strong>Type:</strong> {{ machine.type }}
+        </li>
+        <li class="list-group-item">
+            <strong>Adresse IP:</strong> {{ machine.ip }}
+        </li>
+        <li class="list-group-item">
+            <strong>État:</strong> {{ machine.etat }}
+        </li>
+        <li class="list-group-item">
+            <strong>Date de maintenance:</strong> {{ machine.date_maintenance|date:"d/m/Y" }}
+        </li>
+    </ul>
+
+    <h2>Modifier l'état de la machine</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </form>
+</div>
+{% endblock %}
